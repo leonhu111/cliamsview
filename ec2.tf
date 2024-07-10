@@ -20,7 +20,7 @@ module "ec2_instance" {
   instance_type          = "t2.micro"
   //key_name               = "user1"
   monitoring             = true
-  vpc_security_group_ids = aws_security_group.allow_tls.id
+  vpc_security_group_ids = [aws_security_group.allow_tls.id]
   subnet_id              = aws_subnet.main.id
 
   tags = {

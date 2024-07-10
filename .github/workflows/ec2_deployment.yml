@@ -27,15 +27,8 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Initialize Terraform
-        run: terraform init
-
-      - name: Validate Terraform configuration
-        run: terraform validate
-
-      - name: Plan Terraform changes
-        run: terraform plan -out=tfplan
-
-      - name: Apply Terraform changes
-        run: terraform apply -auto-approve tfplan
+        run: |
+          terraform init
+          terraform validate
+          terraform plan -out=tfplan
+          terraform apply -auto-approve tfplan
